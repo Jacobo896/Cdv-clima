@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Clima de Ciudad Victoria</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6dd5fa, #2980b9);
+            color: white;
+        }
+        header, footer {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        main {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h2 {
+            color: #ffffff;
+        }
+        section {
+            margin-bottom: 25px;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            color: black;
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+        .card, .forecast, .mapa {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .forecast-day {
+            display: inline-block;
+            width: 120px;
+            background: rgba(255,255,255,0.1);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .forecast-day img { width: 50px; }
+        #map {
+            height: 400px;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #ffffff22;
+            border: 1px solid white;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>El Clima de Ciudad Victoria</h1>
+        <p>Trabajo en equipo - Integrante: Jacobo</p>
+    </header><main>
+    <section>
+        <h2>¿Dónde se ubica Ciudad Victoria?</h2>
+        <p>Ciudad Victoria es la capital del estado de Tamaulipas, en el noreste de México. Está situada entre la Sierra Madre Oriental y el Golfo de México, lo que influye en su clima.</p>
+    </section>
+    <section>
+        <h2>Clima General</h2>
+        <p>El clima es semiárido cálido. Los veranos son muy calurosos, con temperaturas que pueden superar los 40°C, mientras que los inviernos son templados. La precipitación es escasa durante la mayor parte del año, concentrándose principalmente en los meses de verano.</p>
+    </section>
+    <section>
+        <h2>Promedio de Temperaturas por Mes</h2>
+        <table>
+            <tr><th>Mes</th><th>Temperatura Mínima (°C)</th><th>Temperatura Máxima (°C)</th></tr>
+            <tr><td>Enero</td><td>10</td><td>23</td></tr>
+            <tr><td>Febrero</td><td>12</td><td>25</td></tr>
+            <tr><td>Marzo</td><td>15</td><td>30</td></tr>
+            <tr><td>Abril</td><td>18</td><td>34</td></tr>
+            <tr><td>Mayo</td><td>22</td><td>38</td></tr>
+            <tr><td>Junio</td><td>24</td><td>41</td></tr>
+            <tr><td>Julio</td><td>25</td><td>42</td></tr>
+            <tr><td>Agosto</td><td>24</td><td>41</td></tr>
+            <tr><td>Septiembre</td><td>22</td><td>37</td></tr>
+            <tr><td>Octubre</td><td>18</td><td>33</td></tr>
+            <tr><td>Noviembre</td><td>14</td><td>28</td></tr>
+            <tr><td>Diciembre</td><td>11</td><td>24</td></tr>
+        </table>
+    </section>
+    <section>
+        <h2>Temporadas del año</h2>
+        <ul>
+            <li><strong>Primavera:</strong> cálida y agradable, ideal para actividades al aire libre.</li>
+            <li><strong>Verano:</strong> extremadamente caluroso, es común el uso de aire acondicionado en hogares y escuelas.</li>
+            <li><strong>Otoño:</strong> temperaturas agradables y descenso progresivo del calor.</li>
+            <li><strong>Invierno:</strong> templado, con temperaturas mínimas que rara vez bajan de los 5°C.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Consecuencias del Clima</h2>
+        <p>Las altas temperaturas afectan la salud de los habitantes, en especial de niños y adultos mayores. También se presentan problemas como sequías, afectando la agricultura local.</p>
+    </section>
+    <section>
+        <h2>Impacto del Cambio Climático</h2>
+        <p>En los últimos años, Ciudad Victoria ha experimentado veranos más largos y calurosos, además de una disminución en las lluvias. Esto podría ser consecuencia del cambio climático, lo cual representa un desafío para la gestión del agua y la agricultura.</p>
+    </section>
+    <section>
+        <h2>Recomendaciones</h2>
+        <ul>
+            <li>Evitar la exposición directa al sol entre las 11 am y las 4 pm.</li>
+            <li>Usar ropa ligera y de colores claros.</li>
+            <li>Consumir suficiente agua y alimentos frescos.</li>
+            <li>Protegerse con sombreros, lentes de sol y protector solar.</li>
+            <li>Fomentar el uso de energías limpias para reducir el calentamiento global.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Clima Actual</h2>
+        <div class="card">
+            <p id="descripcion"></p>
+            <p id="temp"></p>
+            <p id="sensacion"></p>
+            <p id="humedad"></p>
+            <p id="presion"></p>
+            <p id="viento"></p>
+            <p id="visibilidad"></p>
+            <p id="actualizacion"></p>
+            <button onclick="leerClima()">Leer clima en voz alta</button>
+        </div>
+    </section>
+    <section>
+        <h2>Pronóstico de 5 días</h2>
+        <div class="forecast" id="dias"></div>
+    </section>
+    <section>
+        <h2>Mapa interactivo y radar</h2>
+        <div class="mapa">
+            <div id="map"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Trabajo escolar elaborado con Visual Studio Code - Abril 2025</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    const API_KEY = "40023f22ed2bd6b0fc5cc231f0c022ed";
+    const lat = 23.7369;
+    const lon = -99.1411;
+    let textoClima = "";
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`)
+      .then(res => res.json())
+      .then(data => {
+        const w = data.weather[0];
+        const m = data.main;
+        const wind = data.wind;
+
+        document.getElementById("descripcion").textContent = `Condiciones: ${w.description}`;
+        document.getElementById("temp").textContent = `Temperatura: ${m.temp} °C`;
+        document.getElementById("sensacion").textContent = `Sensación térmica: ${m.feels_like} °C`;
+        document.getElementById("humedad").textContent = `Humedad: ${m.humidity}%`;
+        document.getElementById("presion").textContent = `Presión: ${m.pressure} hPa`;
+        document.getElementById("viento").textContent = `Viento: ${wind.speed} m/s`;
+        document.getElementById("visibilidad").textContent = `Visibilidad: ${(data.visibility / 1000).toFixed(1)} km`;
+        document.getElementById("actualizacion").textContent = `Actualizado: ${new Date().toLocaleString('es-MX')}`;
+
+        textoClima = `El clima en Ciudad Victoria es ${w.description}. Temperatura actual de ${m.temp} grados, con sensación térmica de ${m.feels_like}. Humedad del ${m.humidity}% y viento de ${wind.speed} metros por segundo.`;
+    });
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`)
+      .then(res => res.json())
+      .then(data => {
+        const cont = document.getElementById("dias");
+        const pronosticos = {};
+
+        data.list.forEach(entry => {
+          const fecha = entry.dt_txt.split(" ")[0];
+          if (!pronosticos[fecha] && entry.dt_txt.includes("12:00:00")) {
+            pronosticos[fecha] = entry;
+          }
+        });
+
+        Object.keys(pronosticos).slice(0, 5).forEach(dia => {
+          const d = pronosticos[dia];
+          const fecha = new Date(d.dt * 1000).toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric' });
+
+          cont.innerHTML += `
+            <div class="forecast-day">
+              <strong>${fecha}</strong><br>
+              <img src="https://openweathermap.org/img/wn/${d.weather[0].icon}.png">
+              <p>${d.weather[0].description}</p>
+              <p>${d.main.temp} °C</p>
+            </div>
+          `;
+        });
+    });
+
+    function leerClima() {
+      const voz = new SpeechSynthesisUtterance(textoClima);
+      voz.lang = "es-MX";
+      speechSynthesis.speak(voz);
+    }
+
+    const map = L.map("map").setView([lat, lon], 10);
+    L.tileLayer(`https://tile.openstreetmap.org/{z}/{x}/{y}.png`, { attribution: '&copy; OpenStreetMap' }).addTo(map);
+    L.tileLayer(`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${API_KEY}`, { opacity: 0.5 }).addTo(map);
+    const marker = L.marker([lat, lon]).addTo(map);
+    marker.bindPopup("Ciudad Victoria");
+
+    map.on('click', e => {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.latlng.lat}&lon=${e.latlng.lng}&appid=${API_KEY}&units=metric&lang=es`)
+        .then(res => res.json())
+        .then(data => {
+          L.popup()
+            .setLatLng(e.latlng)
+            .setContent(`Clima: ${data.weather[0].description}<br>Temp: ${data.main.temp} °C`)
+            .openOn(map);
+        });
+    });
+</script>
+
+</body>
+</html>
